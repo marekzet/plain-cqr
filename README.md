@@ -13,7 +13,8 @@ Sample command and handler objects
 public class DoNothing : ICommand
 {
 }
-
+```
+```cs
 public class DoNothingHandler : ICommandHandler<DoNothing>
 {
     public void Handle(DoNothing command)
@@ -58,7 +59,8 @@ Sample query and handler objects
 public class GetSomething : IQuery<SomethingViewModel>
 {
 }
-
+```
+```cs
 public class GetSomethingHandler : IQueryHandler<GetSomething, SomethingViewModel>
 {
     public SomethingViewModel Handle(GetSomething query)
@@ -108,7 +110,8 @@ public class SomethingHappened : IEvent
     public Guid Id => Guid.NewGuid();
     // other attributes
 }
-
+```
+```cs
 public class SomethingHappenedHandler : IEventHandler<SomethingHappened>
 {
     public void Handle(SomethingHappened @event)
