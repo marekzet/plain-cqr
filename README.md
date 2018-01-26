@@ -238,11 +238,17 @@ public void ConfigureContainer(ContainerBuilder builder)
 ## Plain CQRS with other frameworks
 I am going to successively add implementations for other frameworks, however it is possible to write own implementation or overwrite
 default ones. All you need to to is to implement following interfaces and register implementations in your container. 
+* `PlainCQRS.Core.Commands.ICommandSender`
+* `PlainCQRS.Core.Commands.ICommandSenderAsync`
 * `PlainCQRS.Core.Commands.ICommandHandler<in TCommand> where TCommand : ICommand`
 * `PlainCQRS.Core.Commands.ICommandHandlerAsync<in TCommand> where TCommand : ICommand`
+* `PlainCQRS.Core.Events.IEventPublisher`
+* `PlainCQRS.Core.Events.IEventPublisherAsync`
 * `PlainCQRS.Core.Events.IEventHandler<TEvent> where TEvent : IEvent`
 * `PlainCQRS.Core.Events.IEventHandlerAsync<in TEvent> where TEvent : IEvent`
 * `PlainCQRS.Core.Queries.IQueryDispatcher`
 * `PlainCQRS.Core.Queries.IQueryDispatcherAsync`
+* `PlainCQRS.Core.Queries.IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>`
+* `PlainCQRS.Core.Queries.IQueryHandlerAsync<in TQuery, TResult> where TQuery : IQuery<TResult>`
 
 Remember that contribution is always welcomed, so consider share your implementations with community.
