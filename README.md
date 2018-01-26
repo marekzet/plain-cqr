@@ -200,7 +200,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> GetSomething()
     {
-        var viewModel = await queryDispatcher.ExecuteAsync(new GetSomething());
+        var viewModel = await queryDispatcher.ExecuteAsync(new GetSomethingAsync());
         return View(viewModel);
     }
 }
