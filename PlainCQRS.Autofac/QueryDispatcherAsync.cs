@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace PlainCQRS.Autofac
 {
+    /// <summary>
+    ///     Default implementation of asynchronous dispatcher for queries.
+    /// </summary>
     public class QueryDispatcherAsync : IQueryDispatcherAsync
     {
         private readonly IComponentContext componentContext;
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="QueryDispatcherAsync"/> class.
+        /// </summary>
+        /// <param name="componentContext">The context in which a service can be accessed or a component's dependencies resolved.</param>
         public QueryDispatcherAsync(IComponentContext componentContext)
         {
             this.componentContext = componentContext;

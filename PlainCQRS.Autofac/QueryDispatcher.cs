@@ -4,10 +4,17 @@ using PlainCQRS.Core.Queries;
 
 namespace PlainCQRS.Autofac
 {
+    /// <summary>
+    ///     Default implementation of synchronous dispatcher for queries.
+    /// </summary>
     public class QueryDispatcher : IQueryDispatcher
     {
         private readonly IComponentContext componentContext;
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="QueryDispatcher"/> class.
+        /// </summary>
+        /// <param name="componentContext">The context in which a service can be accessed or a component's dependencies resolved.</param>
         public QueryDispatcher(IComponentContext componentContext)
         {
             this.componentContext = componentContext;
