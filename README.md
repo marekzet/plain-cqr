@@ -3,6 +3,7 @@ Plain CQRS is a library that supports implementing CQRS pattern using most popul
 
 Incomming features:
 * NuGet package download
+* Sample usage in AspNet Core web app
 * Dispatchers implementations for Castle Windsor container
 
 # Get Started
