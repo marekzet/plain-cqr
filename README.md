@@ -1,6 +1,10 @@
 # Plain CQRS
 Plain CQRS is a library that supports implementing CQRS pattern using most popular frameworks, by providing dispatchers implementations out of the box.
 
+Incomming features:
+* NuGet package download
+* Dispatchers implementations for Castle Windsor container
+
 # Get Started
 
 First create your Command/Query/Event objects and corresponding handlers.
@@ -123,9 +127,12 @@ public class SomethingHappenedHandler : IEventHandler<SomethingHappened>
 Register event and handler
 
 ```cs
-builder.RegisterType<SomethingHappenedHandler>()
-  .As<IEventHandler<SomethingHappened>>()
-  .InstancePerLifetimeScope();
+public void ConfigureContainer(ContainerBuilder builder)
+{
+    builder.RegisterType<SomethingHappenedHandler>()
+      .As<IEventHandler<SomethingHappened>>()
+      .InstancePerLifetimeScope();
+}
 ```
 It is also possible to register more than one handler for particular event e.g.
 ```cs
