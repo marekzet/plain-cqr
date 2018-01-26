@@ -5,6 +5,9 @@ using PlainCQRS.Core.Queries;
 
 namespace PlainCQRS.Autofac
 {
+    /// <summary>
+    ///     Adds default implementations of dispatchers to an Autofac container.
+    /// </summary>
     public class AspNetCoreModule : Module
     {
         protected override void Load(ContainerBuilder builder)
