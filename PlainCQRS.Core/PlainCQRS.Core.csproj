@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Marek Zając</Authors>
+    <Company />
+    <Description>Lightweight library to help implementing Command Query Responsibility Segration pattern.</Description>
+    <PackageTags>cqrs</PackageTags>
   </PropertyGroup>
 
 </Project>
