@@ -1,18 +1,14 @@
 # Plain CQRS
 Plain CQRS is a library that supports implementing CQRS pattern using most popular frameworks, by providing dispatchers implementations out of the box.
 
-Incomming features:
-* NuGet package download
-* Sample usage in AspNet Core web app
-* Dispatchers implementations for Castle Windsor container
-
 # Get Started
-
-First create your Command/Query/Event objects and corresponding handlers.
+Install library via
+**Package Manager** ```Install-Package PlainCQRS.Core -Version 1.0.0``` or
+**.Net CLI** ```dotnet add package PlainCQRS.Core --version 1.0.0```
 
 ### Commands
 
-Sample command and handler objects
+Create sample command and command handler
 
 ```cs
 public class DoNothing : ICommand
@@ -27,7 +23,7 @@ public class DoNothingHandler : ICommandHandler<DoNothing>
     }
 }
 ```
-Register command and handler in the container.
+Register command and command handler in the container
 ```cs
 public void ConfigureContainer(ContainerBuilder builder)
 {
@@ -58,7 +54,7 @@ public class HomeController : Controller
 
 ### Queries
 
-Sample query and handler objects
+Create sample query and query handler
 
 ```cs
 public class GetSomething : IQuery<SomethingViewModel>
@@ -77,7 +73,7 @@ public class GetSomethingHandler : IQueryHandler<GetSomething, SomethingViewMode
     }
 }
 ```
-Register query and handler in the container.
+Register query and query handler in the container
 ```cs
 public void ConfigureContainer(ContainerBuilder builder)
 {
@@ -107,7 +103,7 @@ public class HomeController : Controller
 
 ### Events
 
-Sample event and handler objects
+Create event and event handler
 
 ```cs
 public class SomethingHappened : IEvent
@@ -125,7 +121,7 @@ public class SomethingHappenedHandler : IEventHandler<SomethingHappened>
 }
 ```
 
-Register event and handler
+Register event and event handler
 
 ```cs
 public void ConfigureContainer(ContainerBuilder builder)
@@ -135,7 +131,7 @@ public void ConfigureContainer(ContainerBuilder builder)
       .InstancePerLifetimeScope();
 }
 ```
-It is also possible to register more than one handler for particular event e.g.
+It is also possible to register more than one handler for particular event
 ```cs
 public void ConfigureContainer(ContainerBuilder builder)
 {
@@ -148,8 +144,7 @@ public void ConfigureContainer(ContainerBuilder builder)
         .InstancePerLifetimeScope();
 }
 ```
-Use
-
+Publish event. In this example event is published after handling a DoNothing command from DoNothing handler
 ```cs
 public class DoNothingHandler : ICommandHandler<DoNothing>
 {
@@ -159,8 +154,12 @@ public class DoNothingHandler : ICommandHandler<DoNothing>
     {
         this.eventPublisher = eventPublisher;
     }
+    
     public void Handle(DoNothing command)
     {
+        // .. handle command
+        
+        // publish event
         eventPublisher.Publish(new NotingHappened());
     }
 }
@@ -258,5 +257,3 @@ default ones. All you need to to is to implement following interfaces and regist
 * `PlainCQRS.Core.Queries.IQueryDispatcherAsync`
 * `PlainCQRS.Core.Queries.IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>`
 * `PlainCQRS.Core.Queries.IQueryHandlerAsync<in TQuery, TResult> where TQuery : IQuery<TResult>`
-
-Remember that contribution is always welcomed, so consider share your implementations with community.
